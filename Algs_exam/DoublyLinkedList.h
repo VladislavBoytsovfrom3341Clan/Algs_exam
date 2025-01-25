@@ -74,7 +74,8 @@ public:
 
 	void push_back(T val);
 
-	void insert(DoublyLinkedListIterator<T> pos, T&& val);
+	template<typename Y>
+	void insert(DoublyLinkedListIterator<T> pos, Y&& val);
 
 	void pop_front();
 
@@ -160,9 +161,10 @@ inline void DoublyLinkedList<T>::push_back(T val)
 }
 
 template<typename T>
-inline void DoublyLinkedList<T>::insert(DoublyLinkedListIterator<T> pos, T&& val)
+template<typename Y>
+inline void DoublyLinkedList<T>::insert(DoublyLinkedListIterator<T> pos, Y&& val)
 {
-	DoublyLinkedListNode<T>* new_node = new DoublyLinkedListNode<T>(std::forward<T>(val));
+	DoublyLinkedListNode<T>* new_node = new DoublyLinkedListNode<T>(std::forward<Y>(val));
 	if (this->empty())
 	{
 		m_head = new_node;

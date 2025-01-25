@@ -3,17 +3,16 @@
 
 #include "SinglyLinkedList.h"
 #include "DoublyLinkedList.h"
+#include "VectorStack.h"
 
 int main()
 {
-    DoublyLinkedList<int> s;
-    for (int i = 0; i < 20; i++)
-        s.push_back(i);
-    for (auto it = s.begin(); it != s.end(); ++it)
-        std::cout << *it << ' ';
-    std::cout << '\n';
-    s.erase(--s.end());
-    for (auto& i : s)
-        std::cout << i << ' ';
+    VectorStack<int> s = { 1, 2, 4, 5 };
+    std::cout << s.top() << '\n';
+    s.pop();
+    std::cout << s.top()<<'\n';
+    int a = 9;
+    s.push(a);
+    std::cout << s.top();
 }
 
