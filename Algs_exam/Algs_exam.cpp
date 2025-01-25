@@ -14,6 +14,7 @@ int main()
     std::cout << s.top()<<'\n';
     int a = 9;
     s.push(a);
+    s.push(6);
     std::cout << s.top();
 }
 

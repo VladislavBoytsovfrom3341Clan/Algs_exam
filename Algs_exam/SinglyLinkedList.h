@@ -58,9 +58,11 @@ public:
 
 	size_t size() const;
 
-	void push_front(T val);
+	template<typename Y>
+	void push_front(Y val);
 
-	void push_back(T val);
+	template<typename Y>
+	void push_back(Y val);
 
 	void pop_front();
 
@@ -126,9 +128,10 @@ inline size_t SinglyLinkedList<T>::size() const
 }
 
 template<typename T>
-inline void SinglyLinkedList<T>::push_front(T val)
+template<typename Y>
+inline void SinglyLinkedList<T>::push_front(Y val)
 {
-	SinglyLinkedListNode<T>* new_head = new SinglyLinkedListNode<T>(val, m_head);
+	SinglyLinkedListNode<T>* new_head = new SinglyLinkedListNode<Y>(val, m_head);
 	if (m_tail == nullptr)
 		m_tail = new_head;
 	m_head = new_head;
@@ -136,9 +139,10 @@ inline void SinglyLinkedList<T>::push_front(T val)
 }
 
 template<typename T>
-inline void SinglyLinkedList<T>::push_back(T val)
+template<typename Y>
+inline void SinglyLinkedList<T>::push_back(Y val)
 {
-	SinglyLinkedListNode<T>* new_tail = new SinglyLinkedListNode<T>(val);
+	SinglyLinkedListNode<T>* new_tail = new SinglyLinkedListNode<Y>(val);
 	if (m_tail == nullptr)
 	{
 		m_tail = new_tail;

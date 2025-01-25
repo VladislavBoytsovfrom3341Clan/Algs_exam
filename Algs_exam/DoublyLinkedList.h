@@ -70,9 +70,11 @@ public:
 
 	size_t size() const;
 
-	void push_front(T val);
+	template<typename Y>
+	void push_front(Y&& val);
 
-	void push_back(T val);
+	template<typename Y>
+	void push_back(Y&& val);
 
 	template<typename Y>
 	void insert(DoublyLinkedListIterator<T> pos, Y&& val);
@@ -129,9 +131,10 @@ inline size_t DoublyLinkedList<T>::size() const
 }
 
 template<typename T>
-inline void DoublyLinkedList<T>::push_front(T val)
+template<typename Y>
+inline void DoublyLinkedList<T>::push_front(Y&& val)
 {
-	DoublyLinkedListNode<T>* new_head = new DoublyLinkedListNode<T>(val);
+	DoublyLinkedListNode<T>* new_head = new DoublyLinkedListNode<T>(std::forward<Y>(val));
 	if (m_head == nullptr)
 	{
 		m_head = new_head;
@@ -147,9 +150,10 @@ inline void DoublyLinkedList<T>::push_front(T val)
 }
 
 template<typename T>
-inline void DoublyLinkedList<T>::push_back(T val)
+template<typename Y>
+inline void DoublyLinkedList<T>::push_back(Y&& val)
 {
-	DoublyLinkedListNode<T>* new_tail = new DoublyLinkedListNode<T>(val);
+	DoublyLinkedListNode<T>* new_tail = new DoublyLinkedListNode<T>(std::forward<Y>(val));
 	if (m_tail == nullptr)
 	{
 		m_tail = new_tail;
