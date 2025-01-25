@@ -5,16 +5,18 @@
 #include "DoublyLinkedList.h"
 #include "VectorStack.h"
 #include "LLStack.h"
+#include "VectorQueue.h"
+#include "VectorQueue.h"
 
 int main()
 {
-    LLStack<int> s = { 1, 2, 4, 5 };
-    std::cout << s.top() << '\n';
-    s.pop();
-    std::cout << s.top()<<'\n';
-    int a = 9;
-    s.push(a);
-    s.push(6);
-    std::cout << s.top();
+    VectorQueue<int> s = { 1, 2, 4, 5 };
+    std::cout << s.front()<<' ' << s.back()<<'\n';
+    for (int i = 0; i < 100; i++)
+        s.push(i);
+    std::cout << s.front() << ' ' << s.back() << '\n';
+    for (int i = 0; i < 75; i++)
+        s.pop();
+    std::cout << s.front() << ' ' << s.back() << '\n';
 }
 
