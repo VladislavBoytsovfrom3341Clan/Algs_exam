@@ -130,6 +130,7 @@
     <ClCompile Include="Algs_exam.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DLLDeque.h" />
     <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="ListQueue.h" />
     <ClInclude Include="LLStack.h" />
