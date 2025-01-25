@@ -12,7 +12,7 @@ int main()
     for (auto it = s.begin(); it != s.end(); ++it)
         std::cout << *it << ' ';
     std::cout << '\n';
-    s.insert(--(--s.end()), -11);
+    s.erase(--s.end());
     for (auto& i : s)
         std::cout << i << ' ';
 }

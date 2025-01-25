@@ -80,6 +80,8 @@ public:
 
 	void pop_back();
 
+	void erase(DoublyLinkedListIterator<T> pos);
+
 	T& front();
 
 	T& back();
@@ -225,6 +227,42 @@ inline void DoublyLinkedList<T>::pop_back()
 		delete m_tail;
 		ptr->next = nullptr;
 		m_tail = ptr;
+	}
+	m_size--;
+}
+
+template<typename T>
+inline void DoublyLinkedList<T>::erase(DoublyLinkedListIterator<T> pos)
+{
+	if (pos.node == nullptr)
+		throw std::runtime_error("Invalid iterator\n");
+	if (m_head == nullptr)
+		throw std::runtime_error("Trying to erase from empty list\n");
+	if (pos.node == m_head && m_head == m_tail)
+	{
+		delete pos.node;
+		m_tail = nullptr;
+		m_head = nullptr; 
+		m_size = 0;
+		return;
+	}
+	if (pos.node == m_head)
+	{
+		pos.node->next->prev = nullptr;
+		m_head = pos.node->next;
+		delete pos.node;
+	}
+	else if (pos.node == m_tail)
+	{
+		pos.node->prev->next = nullptr;
+		m_tail = pos.node->prev;
+		delete pos.node;
+	}
+	else
+	{
+		pos.node->prev->next = pos.node->next;
+		pos.node->next->prev = pos.node->prev;
+		delete pos.node;
 	}
 	m_size--;
 }
