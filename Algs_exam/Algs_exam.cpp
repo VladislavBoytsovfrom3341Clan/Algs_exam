@@ -6,11 +6,11 @@
 #include "VectorStack.h"
 #include "LLStack.h"
 #include "VectorQueue.h"
-#include "VectorQueue.h"
+#include "ListQueue.h"
 
 int main()
 {
-    VectorQueue<int> s = { 1, 2, 4, 5 };
+    ListQueue<int> s = { 1, 2, 4, 5 };
     std::cout << s.front()<<' ' << s.back()<<'\n';
     for (int i = 0; i < 100; i++)
         s.push(i);

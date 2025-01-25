@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DoublyLinkedList.h" />
+    <ClInclude Include="ListQueue.h" />
     <ClInclude Include="LLStack.h" />
     <ClInclude Include="SinglyLinkedList.h" />
     <ClInclude Include="VectorQueue.h" />

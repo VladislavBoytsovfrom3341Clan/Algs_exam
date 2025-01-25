@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdexcept>
+#include <initializer_list>
 
 template<typename T>
 class DoublyLinkedList;
@@ -66,6 +67,8 @@ public:
 
 	DoublyLinkedList(T val);
 
+	DoublyLinkedList(std::initializer_list<T> init);
+
 	bool empty() const;
 
 	size_t size() const;
@@ -116,6 +119,15 @@ inline DoublyLinkedList<T>::DoublyLinkedList(T val)
 	m_head = new DoublyLinkedListNode<T>(val);
 	m_tail = m_head;
 	m_size = 1;
+}
+
+template<typename T>
+inline DoublyLinkedList<T>::DoublyLinkedList(std::initializer_list<T> init)
+{
+	for (auto& i : init)
+	{
+		this->push_back(std::move(i));
+	}
 }
 
 template<typename T>
