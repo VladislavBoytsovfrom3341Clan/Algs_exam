@@ -56,7 +56,7 @@ public:
 
 	bool empty() const;
 
-	int size() const;
+	size_t size() const;
 
 	void push_front(T val);
 
@@ -68,7 +68,11 @@ public:
 
 	T& front();
 
+	const T& front() const;
+
 	T& back();
+
+	const T& back() const;
 
 	SinglyLinkedListIterator<T> begin();
 
@@ -116,7 +120,7 @@ inline bool SinglyLinkedList<T>::empty() const
 }
 
 template<typename T>
-inline int SinglyLinkedList<T>::size() const
+inline size_t SinglyLinkedList<T>::size() const
 {
 	return m_size;
 }
@@ -193,7 +197,23 @@ inline T& SinglyLinkedList<T>::front()
 }
 
 template<typename T>
+inline const T& SinglyLinkedList<T>::front() const
+{
+	if (m_head == nullptr)
+		throw std::runtime_error("Trying to access empty list element\n");
+	return m_head->data;
+}
+
+template<typename T>
 inline T& SinglyLinkedList<T>::back()
+{
+	if (m_tail == nullptr)
+		throw std::runtime_error("Trying to access empty list element\n");
+	return m_tail->data;
+}
+
+template<typename T>
+inline const T& SinglyLinkedList<T>::back() const
 {
 	if (m_tail == nullptr)
 		throw std::runtime_error("Trying to access empty list element\n");

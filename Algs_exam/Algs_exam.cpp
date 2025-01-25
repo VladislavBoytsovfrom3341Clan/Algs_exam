@@ -4,10 +4,11 @@
 #include "SinglyLinkedList.h"
 #include "DoublyLinkedList.h"
 #include "VectorStack.h"
+#include "LLStack.h"
 
 int main()
 {
-    VectorStack<int> s = { 1, 2, 4, 5 };
+    LLStack<int> s = { 1, 2, 4, 5 };
     std::cout << s.top() << '\n';
     s.pop();
     std::cout << s.top()<<'\n';

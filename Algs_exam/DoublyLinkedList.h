@@ -68,7 +68,7 @@ public:
 
 	bool empty() const;
 
-	int size() const;
+	size_t size() const;
 
 	void push_front(T val);
 
@@ -85,7 +85,11 @@ public:
 
 	T& front();
 
+	const T& front() const;
+
 	T& back();
+
+	const T& back() const;
 
 	DoublyLinkedListIterator<T> begin();
 
@@ -119,7 +123,7 @@ inline bool DoublyLinkedList<T>::empty() const
 }
 
 template<typename T>
-inline int DoublyLinkedList<T>::size() const
+inline size_t DoublyLinkedList<T>::size() const
 {
 	return m_size;
 }
@@ -278,7 +282,23 @@ inline T& DoublyLinkedList<T>::front()
 }
 
 template<typename T>
+inline const T& DoublyLinkedList<T>::front() const
+{
+	if (m_head == nullptr)
+		throw std::runtime_error("Trying to access to empty list\n");
+	return m_head->data;
+}
+
+template<typename T>
 inline T& DoublyLinkedList<T>::back()
+{
+	if (m_tail == nullptr)
+		throw std::runtime_error("Trying to access to empty list\n");
+	return m_tail->data;
+}
+
+template<typename T>
+inline const T& DoublyLinkedList<T>::back() const
 {
 	if (m_tail == nullptr)
 		throw std::runtime_error("Trying to access to empty list\n");
