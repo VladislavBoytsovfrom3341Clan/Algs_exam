@@ -26,9 +26,9 @@ public:
 
 	SinglyLinkedList(T val);
 
-	bool empty();
+	bool empty() const;
 
-	int size();
+	int size() const;
 
 	void push_front(T val);
 
@@ -78,13 +78,13 @@ inline SinglyLinkedList<T>::SinglyLinkedList(T val)
 }
 
 template<typename T>
-inline bool SinglyLinkedList<T>::empty()
+inline bool SinglyLinkedList<T>::empty() const
 {
 	return(m_head == nullptr);
 }
 
 template<typename T>
-inline int SinglyLinkedList<T>::size()
+inline int SinglyLinkedList<T>::size() const
 {
 	return m_size;
 }
@@ -120,7 +120,7 @@ template<typename T>
 inline void SinglyLinkedList<T>::pop_front()
 {
 	if (m_head == nullptr)
-		return;
+		throw std::runtime_error("Trying to pop from empty list\n");
 	SinglyLinkedListNode<T>* next = m_head->next;
 	delete m_head;
 	m_head = next;
@@ -133,7 +133,7 @@ template<typename T>
 inline void SinglyLinkedList<T>::pop_back()
 {
 	if (m_tail == nullptr)
-		return;
+		throw std::runtime_error("Trying to pop from empty list\n");
 	SinglyLinkedListNode<T>* prev_tail = m_head;
 	if (prev_tail == m_tail)
 	{

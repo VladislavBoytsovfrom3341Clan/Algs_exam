@@ -1,11 +1,13 @@
 ﻿#include <iostream>
 
 #include "SinglyLinkedList.h"
+#include "DoublyLinkedList.h"
 
 int main()
 {
-    SinglyLinkedList<int> my_list;
-    my_list.push_back(5);
+    DoublyLinkedList<int> m;
+    m.push_front(8);
+    std::cout<<m.back()<<m.front();
     
 }
 
