@@ -5,9 +5,11 @@
 
 int main()
 {
-    DoublyLinkedList<int> m;
-    m.push_front(8);
-    std::cout<<m.back()<<m.front();
-    
+    SinglyLinkedList<int> s;
+    for (int i = 0; i < 20; i++)
+        s.push_back(i);
+    for (auto it = s.begin(); it != s.end(); ++it)
+        std::cout << *it << ' ';
+
 }
 

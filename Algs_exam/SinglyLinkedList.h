@@ -14,6 +14,34 @@ struct SinglyLinkedListNode
 };
 
 template<typename T>
+class SinglyLinkedListIterator
+{
+	SinglyLinkedListNode<T>* node;
+
+public:
+
+	SinglyLinkedListIterator(SinglyLinkedListNode<T>* node);
+
+	SinglyLinkedListIterator(const SinglyLinkedListIterator<T>& copy);
+
+	SinglyLinkedListIterator(SinglyLinkedListIterator<T>&& moved);
+
+	SinglyLinkedListIterator<T>& operator=(const SinglyLinkedListIterator<T>& copy);
+
+	SinglyLinkedListIterator<T>& operator=(SinglyLinkedListIterator<T>&& moved);
+
+	SinglyLinkedListIterator<T>& operator++();
+
+	SinglyLinkedListIterator<T> operator++(int);
+
+	T& operator*();
+
+	bool operator==(const SinglyLinkedListIterator<T>& other) const;
+
+	bool operator!=(const SinglyLinkedListIterator<T>& other) const;
+};
+
+template<typename T>
 class SinglyLinkedList
 {
 	SinglyLinkedListNode<T>* m_head = nullptr;
@@ -41,6 +69,10 @@ public:
 	T& front();
 
 	T& back();
+
+	SinglyLinkedListIterator<T> begin();
+
+	SinglyLinkedListIterator<T> end();
 
 	T& operator[] (int n);
 
@@ -169,6 +201,18 @@ inline T& SinglyLinkedList<T>::back()
 }
 
 template<typename T>
+inline SinglyLinkedListIterator<T> SinglyLinkedList<T>::begin()
+{
+	return SinglyLinkedListIterator<T>(m_head);
+}
+
+template<typename T>
+inline SinglyLinkedListIterator<T> SinglyLinkedList<T>::end()
+{
+	return SinglyLinkedListIterator<T>(m_tail->next);
+}
+
+template<typename T>
 inline T& SinglyLinkedList<T>::operator[](int n)
 {
 	if (m_head == nullptr)
@@ -209,3 +253,72 @@ inline SinglyLinkedList<T>::~SinglyLinkedList()
 	}
 }
 
+template<typename T>
+inline SinglyLinkedListIterator<T>::SinglyLinkedListIterator(SinglyLinkedListNode<T>* node)
+{
+	this->node = node;
+}
+
+template<typename T>
+inline SinglyLinkedListIterator<T>::SinglyLinkedListIterator(const SinglyLinkedListIterator<T>& copy)
+{
+	this->node = copy.node;
+}
+
+template<typename T>
+inline SinglyLinkedListIterator<T>::SinglyLinkedListIterator(SinglyLinkedListIterator<T>&& moved)
+{
+	this->node = moved.node;
+	moved.node = nullptr;
+}
+
+template<typename T>
+inline SinglyLinkedListIterator<T>& SinglyLinkedListIterator<T>::operator=(const SinglyLinkedListIterator& copy)
+{
+	if (this == &copy)
+		return *this;
+	this->node = copy.node;
+	return *this;
+}
+
+template<typename T>
+inline SinglyLinkedListIterator<T>& SinglyLinkedListIterator<T>::operator=(SinglyLinkedListIterator<T>&& moved)
+{
+	if (this == &moved)
+		return *this;
+	this->node = moved.node;
+	moved.node = nullptr;
+}
+
+template<typename T>
+inline SinglyLinkedListIterator<T>& SinglyLinkedListIterator<T>::operator++()
+{
+	node = node->next;
+	return *this;
+}
+
+template<typename T>
+inline SinglyLinkedListIterator<T> SinglyLinkedListIterator<T>::operator++(int)
+{
+	SinglyLinkedListIterator<T> copy(*this);
+	this->node = this->node->next;
+	return copy;
+}
+
+template<typename T>
+inline T& SinglyLinkedListIterator<T>::operator*()
+{
+	return this->node->data;
+}
+
+template<typename T>
+inline bool SinglyLinkedListIterator<T>::operator==(const SinglyLinkedListIterator<T>& other) const
+{
+	return this->node == other.node;
+}
+
+template<typename T>
+inline bool SinglyLinkedListIterator<T>::operator!=(const SinglyLinkedListIterator<T>& other) const
+{
+	return this->node != other.node;
+}
