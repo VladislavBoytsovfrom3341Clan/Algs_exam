@@ -5,7 +5,7 @@
 
 int main()
 {
-    SinglyLinkedList<int> s;
+    DoublyLinkedList<int> s;
     for (int i = 0; i < 20; i++)
         s.push_back(i);
     for (auto it = s.begin(); it != s.end(); ++it)

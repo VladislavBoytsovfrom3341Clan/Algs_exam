@@ -14,6 +14,37 @@ struct DoublyLinkedListNode
 	DoublyLinkedListNode(T val);
 };
 
+template<typename T>
+class DoublyLinkedListIterator
+{
+	DoublyLinkedListNode<T>* node;
+
+public:
+
+	DoublyLinkedListIterator(DoublyLinkedListNode<T>* node);
+
+	DoublyLinkedListIterator(const DoublyLinkedListIterator<T>& copy);
+
+	DoublyLinkedListIterator(DoublyLinkedListIterator<T>&& moved);
+
+	DoublyLinkedListIterator<T>& operator=(const DoublyLinkedListIterator<T>& copy);
+
+	DoublyLinkedListIterator<T>& operator=(DoublyLinkedListIterator<T>&& moved);
+
+	DoublyLinkedListIterator<T>& operator++();
+
+	DoublyLinkedListIterator<T>& operator--();
+
+	DoublyLinkedListIterator<T> operator++(int);
+
+	DoublyLinkedListIterator<T> operator--(int);
+
+	T& operator*();
+
+	bool operator==(const DoublyLinkedListIterator<T>& other) const;
+
+	bool operator!=(const DoublyLinkedListIterator<T>& other) const;
+};
 
 template<typename T>
 class DoublyLinkedList
@@ -43,6 +74,10 @@ public:
 	T& front();
 
 	T& back();
+
+	DoublyLinkedListIterator<T> begin();
+
+	DoublyLinkedListIterator<T> end();
 
 	T& operator[](int n);
 
@@ -172,6 +207,18 @@ inline T& DoublyLinkedList<T>::back()
 }
 
 template<typename T>
+inline DoublyLinkedListIterator<T> DoublyLinkedList<T>::begin()
+{
+	return DoublyLinkedListIterator<T>(m_head);
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T> DoublyLinkedList<T>::end()
+{
+	return DoublyLinkedListIterator<T>(nullptr);
+}
+
+template<typename T>
 inline T& DoublyLinkedList<T>::operator[](int n)
 {
 	if (m_head == nullptr)
@@ -211,4 +258,90 @@ inline DoublyLinkedList<T>::~DoublyLinkedList()
 		delete m_head;
 		m_head = ptr;
 	}
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T>::DoublyLinkedListIterator(DoublyLinkedListNode<T>* node)
+{
+	this->node = node;
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T>::DoublyLinkedListIterator(const DoublyLinkedListIterator<T>& copy)
+{
+	this->node = copy.node;
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T>::DoublyLinkedListIterator(DoublyLinkedListIterator<T>&& moved)
+{
+	this->node = moved.node;
+	moved.node = nullptr;
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T>& DoublyLinkedListIterator<T>::operator=(const DoublyLinkedListIterator<T>& copy)
+{
+	if (this == &copy)
+		return *this;
+	this->node = copy.node;
+	return *this;
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T>& DoublyLinkedListIterator<T>::operator=(DoublyLinkedListIterator<T>&& moved)
+{
+	if (this == &moved)
+		return *this;
+	this->node = moved.node;
+	moved.node = nullptr;
+	return *this;
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T>& DoublyLinkedListIterator<T>::operator++()
+{
+	this->node = this->node->next;
+	return *this;
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T>& DoublyLinkedListIterator<T>::operator--()
+{
+	this->node = this->node->prev;
+	return *this;
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T> DoublyLinkedListIterator<T>::operator++(int)
+{
+	DoublyLinkedListIterator<T> temp(*this);
+	this->node = this->node->next;
+	return temp;
+}
+
+template<typename T>
+inline DoublyLinkedListIterator<T> DoublyLinkedListIterator<T>::operator--(int)
+{
+	DoublyLinkedListIterator<T> temp(*this);
+	this->node = this->node->prev;
+	return temp;
+}
+
+template<typename T>
+inline T& DoublyLinkedListIterator<T>::operator*()
+{
+	return this->node->data;
+}
+
+template<typename T>
+inline bool DoublyLinkedListIterator<T>::operator==(const DoublyLinkedListIterator<T>& other) const
+{
+	return this->node == other.node;
+}
+
+template<typename T>
+inline bool DoublyLinkedListIterator<T>::operator!=(const DoublyLinkedListIterator<T>& other) const
+{
+	return node != other.node;
 }
