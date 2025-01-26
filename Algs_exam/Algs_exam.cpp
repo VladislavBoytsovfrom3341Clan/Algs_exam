@@ -14,6 +14,7 @@
 #include "InsertionSort.h"
 #include "mergeSort.h"
 #include "QuickSort.h"
+#include "CountingSort.h"
 
 template<typename T>
 void print_vector(const std::vector<T>& v)
@@ -27,7 +28,7 @@ int main()
 {
     std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
     print_vector(v);
-    quickSort(v, 0, v.size() - 1);
+    countingSort(v);
     print_vector(v);
 }
 
