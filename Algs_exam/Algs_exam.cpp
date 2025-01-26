@@ -16,6 +16,7 @@
 #include "QuickSort.h"
 #include "CountingSort.h"
 #include "MaxHeap.h"
+#include "AVLTree.h"
 
 template<typename T>
 void print_vector(const std::vector<T>& v)
@@ -28,15 +29,16 @@ void print_vector(const std::vector<T>& v)
 int main()
 {
     std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
-    MaxHeap<int> h(v);
-    print_vector(h.deheap());
-    h.insert(6);
-    print_vector(h.deheap());
-    h.pop_max();
-    print_vector(h.deheap());
-    h.pop_max();
-    print_vector(h.deheap());
-    h.insert(666);
-    print_vector(h.deheap());
+    AVLTree<int> avl;
+    for (auto& i : v)
+    {
+        avl.insert(i);
+        std::cout << avl.in_order()<<'\n';
+    }
+    for (auto& i : v)
+    {
+        avl.remove(i);
+        std::cout << avl.in_order() << '\n';
+    }
 }
 

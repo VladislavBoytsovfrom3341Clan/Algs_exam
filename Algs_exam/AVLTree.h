@@ -1,6 +1,7 @@
 #pragma once
 
-#include<stdexcept>
+#include <stdexcept>
+#include <string>
 
 template<typename T>
 struct AVLTreeNode
@@ -12,7 +13,7 @@ struct AVLTreeNode
 
 	AVLTreeNode(T val, AVLTreeNode<T>* l = nullptr, AVLTreeNode<T>* r = nullptr);
 
-	~AVLTreeNode() = default();
+	~AVLTreeNode() = default;
 };
 
 template<typename T>
@@ -46,6 +47,8 @@ class AVLTree
 
 	bool contains(AVLTreeNode<T>* node, T val);
 
+	void in_order(AVLTreeNode<T>* root, std::string& output);
+
 public:
 
 	AVLTree() = default;
@@ -55,6 +58,10 @@ public:
 	void remove(T val);
 
 	bool contains(T val);
+
+	std::string in_order();
+
+	~AVLTree();
 };
 
 template<typename T>
@@ -90,7 +97,7 @@ template<typename T>
 inline AVLTreeNode<T>* AVLTree<T>::left_rotate(AVLTreeNode<T>* a)
 {
 	if (a == nullptr)
-		return;
+		return a;
 	AVLTreeNode<T>* b = a->right;
 	a->right = b->left;
 	b->left = a;
@@ -103,7 +110,7 @@ template<typename T>
 inline AVLTreeNode<T>* AVLTree<T>::right_rotate(AVLTreeNode<T>* b)
 {
 	if (b == nullptr)
-		return;
+		return b;
 	AVLTreeNode<T>* a = b->left;
 	b->left = a->right;
 	a->right = b;
@@ -214,6 +221,16 @@ inline bool AVLTree<T>::contains(AVLTreeNode<T>* node, T val)
 }
 
 template<typename T>
+inline void AVLTree<T>::in_order(AVLTreeNode<T>* root, std::string& output)
+{
+	if (root == nullptr)
+		return;
+	output += std::to_string(root->data) + " ";
+	in_order(root->left, output);
+	in_order(root->right, output);
+}
+
+template<typename T>
 inline void AVLTree<T>::insert(T val)
 {
 	m_root = insert(m_root, val);
@@ -229,4 +246,18 @@ template<typename T>
 inline bool AVLTree<T>::contains(T val)
 {
 	return contains(m_root, val);
+}
+
+template<typename T>
+inline std::string AVLTree<T>::in_order()
+{
+	static std::string output;
+	output.clear();
+	in_order(m_root, output);
+	return output;
+}
+
+template<typename T>
+inline AVLTree<T>::~AVLTree()
+{
 }
