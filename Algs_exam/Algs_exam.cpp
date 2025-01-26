@@ -36,5 +36,7 @@ int main()
     print_vector(h.deheap());
     h.pop_max();
     print_vector(h.deheap());
+    h.insert(666);
+    print_vector(h.deheap());
 }
 
