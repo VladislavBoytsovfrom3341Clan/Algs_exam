@@ -15,6 +15,7 @@
 #include "mergeSort.h"
 #include "QuickSort.h"
 #include "CountingSort.h"
+#include "MaxHeap.h"
 
 template<typename T>
 void print_vector(const std::vector<T>& v)
@@ -27,8 +28,13 @@ void print_vector(const std::vector<T>& v)
 int main()
 {
     std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
-    print_vector(v);
-    countingSort(v);
-    print_vector(v);
+    MaxHeap<int> h(v);
+    print_vector(h.deheap());
+    h.insert(6);
+    print_vector(h.deheap());
+    h.pop_max();
+    print_vector(h.deheap());
+    h.pop_max();
+    print_vector(h.deheap());
 }
 

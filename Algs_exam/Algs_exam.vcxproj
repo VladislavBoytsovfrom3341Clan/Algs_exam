@@ -136,6 +136,7 @@
     <ClInclude Include="InsertionSort.h" />
     <ClInclude Include="ListQueue.h" />
     <ClInclude Include="LLStack.h" />
+    <ClInclude Include="MaxHeap.h" />
     <ClInclude Include="mergeSort.h" />
     <ClInclude Include="QuickSort.h" />
     <ClInclude Include="SinglyLinkedList.h" />
