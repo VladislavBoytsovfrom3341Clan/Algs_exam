@@ -33,9 +33,9 @@ public:
 
 	void pop_front();
 
-	T& front();
+	T front();
 
-	T& back();
+	T back();
 
 	~TwoStackDeque() = default;
 };
@@ -129,7 +129,7 @@ inline void TwoStackDeque<T, Stack>::pop_front()
 }
 
 template<typename T, template<typename T> typename Stack>
-inline T& TwoStackDeque<T, Stack>::back()
+inline T TwoStackDeque<T, Stack>::back()
 {
 	if (!m_left_stack.empty())
 		return m_left_stack.top();
@@ -157,7 +157,7 @@ inline T& TwoStackDeque<T, Stack>::back()
 }
 
 template<typename T, template<typename T> typename Stack>
-inline T& TwoStackDeque<T, Stack>::front()
+inline T TwoStackDeque<T, Stack>::front()
 {
 	if (!m_right_stack.empty())
 		return m_right_stack.top();

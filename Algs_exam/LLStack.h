@@ -33,7 +33,7 @@ public:
 template<typename T>
 inline LLStack<T>::LLStack(std::initializer_list<T> init)
 {
-	for (auto& i : init)
+	for (auto i : init)
 		m_list.push_front(i);
 }
 
