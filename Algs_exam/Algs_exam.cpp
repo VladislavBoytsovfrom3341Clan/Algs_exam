@@ -11,21 +11,21 @@
 #include "ListQueue.h"
 #include "DLLDeque.h"
 #include "TwoStackDeque.h"
+#include "InsertionSort.h"
+
+template<typename T>
+void print_vector(const std::vector<T>& v)
+{
+    for (const auto& i : v)
+        std::cout << i << ' ';
+    std::cout << '\n';
+}
 
 int main()
 {
-    TwoStackDeque<int, LLStack> s = {666};
-    std::cout << s.front()<<' ' << s.back()<<'\n';
-    for (int i = 0; i < 100; i++)
-        s.push_front(i);
-    std::cout << s.front() << ' ' << s.back() << '\n';
-    for (int i = 0; i < 75; i++)
-        s.pop_back();
-    std::cout << s.front() << ' ' << s.back() << '\n';
-
-    /*SinglyLinkedList<int> s;
-    s.push_back(7);
-    s.pop_back();
-    std::cout << s.empty();*/
+    std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
+    print_vector(v);
+    insertionSort(v.begin()+2, v.end() - 1);
+    print_vector(v);
 }
 
