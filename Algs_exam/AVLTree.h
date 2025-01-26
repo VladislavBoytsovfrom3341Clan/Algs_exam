@@ -225,8 +225,8 @@ inline void AVLTree<T>::in_order(AVLTreeNode<T>* root, std::string& output)
 {
 	if (root == nullptr)
 		return;
-	output += std::to_string(root->data) + " ";
 	in_order(root->left, output);
+	output += std::to_string(root->data) + " ";
 	in_order(root->right, output);
 }
 
