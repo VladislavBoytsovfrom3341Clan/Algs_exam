@@ -68,5 +68,8 @@
     <ClInclude Include="BinarySearchTree.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="RBTree.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

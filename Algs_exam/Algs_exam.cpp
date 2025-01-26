@@ -18,6 +18,7 @@
 #include "MaxHeap.h"
 #include "AVLTree.h"
 #include "BinarySearchTree.h"
+#include "RBTree.h"
 
 template<typename T>
 void print_vector(const std::vector<T>& v)
@@ -30,7 +31,7 @@ void print_vector(const std::vector<T>& v)
 int main()
 {
     std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
-    BinarySearchTree<int> avl;
+    RBTree<int> avl;
     for (auto& i : v)
     {
         avl.insert(i);
