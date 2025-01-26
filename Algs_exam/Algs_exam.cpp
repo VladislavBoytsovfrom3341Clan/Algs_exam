@@ -12,6 +12,7 @@
 #include "DLLDeque.h"
 #include "TwoStackDeque.h"
 #include "InsertionSort.h"
+#include "mergeSort.h"
 
 template<typename T>
 void print_vector(const std::vector<T>& v)
@@ -25,7 +26,7 @@ int main()
 {
     std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
     print_vector(v);
-    insertionSort(v.begin()+2, v.end() - 1);
+    mergeSort(v, 0, v.size() - 1);
     print_vector(v);
 }
 

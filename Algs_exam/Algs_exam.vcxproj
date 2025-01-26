@@ -135,6 +135,7 @@
     <ClInclude Include="InsertionSort.h" />
     <ClInclude Include="ListQueue.h" />
     <ClInclude Include="LLStack.h" />
+    <ClInclude Include="mergeSort.h" />
     <ClInclude Include="SinglyLinkedList.h" />
     <ClInclude Include="TwoStackDeque.h" />
     <ClInclude Include="VectorQueue.h" />
