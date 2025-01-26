@@ -13,6 +13,7 @@
 #include "TwoStackDeque.h"
 #include "InsertionSort.h"
 #include "mergeSort.h"
+#include "QuickSort.h"
 
 template<typename T>
 void print_vector(const std::vector<T>& v)
@@ -26,7 +27,7 @@ int main()
 {
     std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
     print_vector(v);
-    mergeSort(v, 0, v.size() - 1);
+    quickSort(v, 0, v.size() - 1);
     print_vector(v);
 }
 
