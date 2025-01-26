@@ -26,19 +26,19 @@ void print_vector(const std::vector<T>& v)
     std::cout << '\n';
 }
 
-int main()
-{
-    std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
-    AVLTree<int> avl;
-    for (auto& i : v)
-    {
-        avl.insert(i);
-        std::cout << avl.in_order()<<'\n';
-    }
-    for (auto& i : v)
-    {
-        avl.remove(i);
-        std::cout << avl.in_order() << '\n';
-    }
-}
+//int main()
+//{
+//    std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
+//    AVLTree<int> avl;
+//    for (auto& i : v)
+//    {
+//        avl.insert(i);
+//        std::cout << avl.in_order()<<'\n';
+//    }
+//    for (auto& i : v)
+//    {
+//        avl.remove(i);
+//        std::cout << avl.in_order() << '\n';
+//    }
+//}
 

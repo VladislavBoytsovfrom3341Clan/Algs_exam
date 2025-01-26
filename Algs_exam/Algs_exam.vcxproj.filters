@@ -18,6 +18,9 @@
     <ClCompile Include="Algs_exam.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="time_tests.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SinglyLinkedList.h">
