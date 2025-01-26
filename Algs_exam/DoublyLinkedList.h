@@ -15,7 +15,8 @@ struct DoublyLinkedListNode
 
 	DoublyLinkedListNode() = default;
 
-	DoublyLinkedListNode(T val);
+	template<typename Y>
+	DoublyLinkedListNode(Y&& val);
 };
 
 template<typename T>
@@ -108,9 +109,10 @@ public:
 };
 
 template<typename T>
-inline DoublyLinkedListNode<T>::DoublyLinkedListNode(T val)
+template<typename Y>
+inline DoublyLinkedListNode<T>::DoublyLinkedListNode(Y&& val):
+	data(std::forward<Y>(val))
 {
-	data = val;
 }
 
 template<typename T>

@@ -10,7 +10,8 @@ struct SinglyLinkedListNode
 
 	SinglyLinkedListNode();
 
-	SinglyLinkedListNode(T val, SinglyLinkedListNode* ptr = nullptr);
+	template<typename Y>
+	SinglyLinkedListNode(Y&& val, SinglyLinkedListNode* ptr = nullptr);
 };
 
 template<typename T>
@@ -59,10 +60,10 @@ public:
 	size_t size() const;
 
 	template<typename Y>
-	void push_front(Y val);
+	void push_front(Y&& val);
 
 	template<typename Y>
-	void push_back(Y val);
+	void push_back(Y&& val);
 
 	void pop_front();
 
@@ -94,8 +95,9 @@ inline SinglyLinkedListNode<T>::SinglyLinkedListNode()
 }
 
 template<typename T>
-inline SinglyLinkedListNode<T>::SinglyLinkedListNode(T val, SinglyLinkedListNode* ptr):
-	data(val), next(ptr)
+template<typename Y>
+inline SinglyLinkedListNode<T>::SinglyLinkedListNode(Y&& val, SinglyLinkedListNode* ptr):
+	data(std::forward<Y>(val)), next(ptr)
 {
 }
 
@@ -129,9 +131,9 @@ inline size_t SinglyLinkedList<T>::size() const
 
 template<typename T>
 template<typename Y>
-inline void SinglyLinkedList<T>::push_front(Y val)
+inline void SinglyLinkedList<T>::push_front(Y&& val)
 {
-	SinglyLinkedListNode<T>* new_head = new SinglyLinkedListNode<Y>(val, m_head);
+	SinglyLinkedListNode<T>* new_head = new SinglyLinkedListNode<T>(std::forward<Y>(val), m_head);
 	if (m_tail == nullptr)
 		m_tail = new_head;
 	m_head = new_head;
@@ -140,9 +142,9 @@ inline void SinglyLinkedList<T>::push_front(Y val)
 
 template<typename T>
 template<typename Y>
-inline void SinglyLinkedList<T>::push_back(Y val)
+inline void SinglyLinkedList<T>::push_back(Y&& val)
 {
-	SinglyLinkedListNode<T>* new_tail = new SinglyLinkedListNode<Y>(val);
+	SinglyLinkedListNode<T>* new_tail = new SinglyLinkedListNode<T>(std::forward<Y>(val));
 	if (m_tail == nullptr)
 	{
 		m_tail = new_tail;

@@ -135,6 +135,7 @@
     <ClInclude Include="ListQueue.h" />
     <ClInclude Include="LLStack.h" />
     <ClInclude Include="SinglyLinkedList.h" />
+    <ClInclude Include="TwoStackDeque.h" />
     <ClInclude Include="VectorQueue.h" />
     <ClInclude Include="VectorStack.h" />
   </ItemGroup>
