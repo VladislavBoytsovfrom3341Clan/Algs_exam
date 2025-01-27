@@ -19,6 +19,8 @@
 #include "AVLTree.h"
 #include "BinarySearchTree.h"
 #include "RBTree.h"
+#include "UniversalHash.h"
+#include "ChainHashTable.h"
 
 template<typename T>
 void print_vector(const std::vector<T>& v)
@@ -30,17 +32,13 @@ void print_vector(const std::vector<T>& v)
 
 int main()
 {
-    std::vector<int> v = { 5, 4, 8, 9, 4, 5, 3, 1, 2, 0, 8 };
-    RBTree<int> avl;
-    for (auto& i : v)
-    {
-        avl.insert(i);
-        std::cout << avl.in_order()<<'\n';
-    }
-    for (auto& i : v)
-    {
-        avl.erase(i);
-        std::cout << avl.in_order() << '\n';
-    }
+    ChainHashTable<int, int, std::list<std::pair<int, int>>> h(100);
+    for (int i = 0; i < 300; i++)
+        h.insert(i, i);
+    h.print();
+
+    DoublyLinkedList<std::pair<int, int>> d = { {1, 0}, {2, 9} };
+    for (auto& i : d)
+        std::cout << i.first << ' '<<i.second<<'\n';
 }
 

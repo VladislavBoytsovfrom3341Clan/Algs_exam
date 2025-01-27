@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="AVLTree.h" />
     <ClInclude Include="BinarySearchTree.h" />
+    <ClInclude Include="ChainHashTable.h" />
     <ClInclude Include="CountingSort.h" />
     <ClInclude Include="DLLDeque.h" />
     <ClInclude Include="DoublyLinkedList.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="RBTree.h" />
     <ClInclude Include="SinglyLinkedList.h" />
     <ClInclude Include="TwoStackDeque.h" />
+    <ClInclude Include="UniversalHash.h" />
     <ClInclude Include="VectorQueue.h" />
     <ClInclude Include="VectorStack.h" />
   </ItemGroup>
