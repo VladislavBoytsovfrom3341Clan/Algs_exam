@@ -21,6 +21,7 @@
 #include "RBTree.h"
 #include "UniversalHash.h"
 #include "ChainHashTable.h"
+#include "OAHashTable.h"
 
 template<typename T>
 void print_vector(const std::vector<T>& v)
@@ -32,9 +33,9 @@ void print_vector(const std::vector<T>& v)
 
 int main()
 {
-    ChainHashTable<int, int, std::list<std::pair<int, int>>> h(100);
-    for (int i = 0; i < 300; i++)
-        h.insert(i, i);
+    OAHashTable<int> h(100);
+    for (int i = 0; i < 500; i++)
+        h.insert(i);
     h.print();
 
     DoublyLinkedList<std::pair<int, int>> d = { {1, 0}, {2, 9} };

@@ -21,7 +21,7 @@ public:
     {
     }
 
-    void insert(const Key& key, const Value& value) 
+    void insert(Key& key, Value& value) 
     {
         unsigned int index = hashFunction(key) % tableSize;
         for (auto& pair : table[index]) 
@@ -31,10 +31,10 @@ public:
                 return;
             }
         }
-        table[index].push_back({ key, value });
+        table[index].push_back<std::pair<Key, Value>>({ key, value });
     }
 
-    bool find(const Key& key, Value& result) const 
+    bool find(Key& key, Value& result) 
     {
         unsigned int index = hashFunction(key) % tableSize;
         for (const auto& pair : table[index]) {
@@ -61,7 +61,7 @@ public:
         return false;
     }
 
-    void print() const 
+    void print() 
     {
         for (size_t i = 0; i < tableSize; ++i) 
         {

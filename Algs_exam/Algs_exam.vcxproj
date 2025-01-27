@@ -142,6 +142,7 @@
     <ClInclude Include="LLStack.h" />
     <ClInclude Include="MaxHeap.h" />
     <ClInclude Include="mergeSort.h" />
+    <ClInclude Include="OAHashTable.h" />
     <ClInclude Include="QuickSort.h" />
     <ClInclude Include="RBTree.h" />
     <ClInclude Include="SinglyLinkedList.h" />
